@@ -1,0 +1,13 @@
+{% extends 'menu/base.html' %}
+
+{% block content %}
+    <div class="menu">
+        {% if menu.created_date %}
+            <div class="date">
+                {{ menu.created_date }}
+            </div>
+        {% endif %}
+        <h2>{{ menu.title }}</h2>
+        <p>{{ menu.description|linebreaksbr }}</p>
+    </div>
+{% endblock %}

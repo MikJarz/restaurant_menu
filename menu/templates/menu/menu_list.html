@@ -1,0 +1,13 @@
+{% extends 'menu/base.html' %}
+
+{% block content %}
+    {% for menu in menus %}
+        <div class="menu">
+            <div class="date">
+                {{ menu.created_date }}
+            </div>
+            <h1><a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.title }}</a></h1>
+            <p>{{ menu.description|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
