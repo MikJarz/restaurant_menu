@@ -4,7 +4,10 @@
     <div class="menu">
         {% if menu.created_date %}
             <div class="date">
+                <strong>Created:</strong>
                 {{ menu.created_date }}
+                <strong>Modified:</strong>
+                {{ menu.modified_date}}
             </div>
         {% endif %}
             {% if user.is_authenticated %}

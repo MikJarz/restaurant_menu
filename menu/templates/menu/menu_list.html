@@ -1,13 +1,23 @@
 {% extends 'menu/base.html' %}
-
 {% block content %}
     {% for menu in menus %}
         <div class="menu">
             <div class="date">
+                <strong>Created:</strong>
                 {{ menu.created_date }}
+                <strong>Modified:</strong>
+                {{ menu.modified_date }}
             </div>
-            <h1><a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.title }}</a></h1>
+            <h1><a class ="pagination" href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.title }}</a></h1>
             <p>{{ menu.description|linebreaksbr }}</p>
         </div>
     {% endfor %}
+
+    <div class="pagination">
+        {% for i in paginator.page_range %}
+            <li {% if i == number_page %} active {% endif %}>
+                <a href="?page={{ i }}">{{i}}</a>
+            </li>
+        {% endfor %}
+    </div>
 {% endblock %}

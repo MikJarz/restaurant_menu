@@ -44,3 +44,14 @@ h1, h2, h3, h4 {
 .menu h2 a, .menu h1 a:visited {
     color: #000000;
 }
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}

@@ -5,7 +5,7 @@ from django.utils import timezone
 class Menu(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
 
