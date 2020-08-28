@@ -12,6 +12,7 @@
         <div class="page-header">
             {% if user.is_authenticated %}
                 <a href="{% url 'menu_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'food_new' %}" class="plus"><span class="glyphicon glyphicon-plus"></span></a>
             {% endif %}
             <h1><a href="/">eMenu</a></h1>
         </div>

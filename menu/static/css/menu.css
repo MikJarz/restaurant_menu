@@ -37,6 +37,13 @@ h1, h2, h3, h4 {
     margin-right: 20px;
 }
 
+.plus, .plus:hover, .plus:visited {
+    color: #008000;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
 .menu {
     margin-bottom: 70px;
 }

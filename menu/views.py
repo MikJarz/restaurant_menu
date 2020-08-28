@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Menu
 from django.shortcuts import render, get_object_or_404
-from .forms import MenuForm
+from .forms import MenuForm, FoodForm
 from django.core.paginator import Paginator
 
 
@@ -26,11 +26,26 @@ def menu_new(request):
         if form.is_valid():
             menu = form.save(commit=False)
             menu.modified_date = timezone.now()
+            menu.created_date = timezone.now()
             menu.save()
             return redirect('menu_detail', pk=menu.pk)
     else:
         form = MenuForm()
     return render(request, 'menu/menu_edit.html', {'form': form})
+
+
+def food_new(request):
+    if request.method == "POST":
+        form = FoodForm(request.POST)
+        if form.is_valid():
+            food = form.save(commit=False)
+            food.created_date = timezone.now()
+            food.save()
+            return redirect('menu_list')
+    else:
+        form = FoodForm()
+    return render(request, 'menu/food_edit.html', {'form': form})
+
 
 def menu_edit(request, pk):
     menu = get_object_or_404(Menu, pk=pk)

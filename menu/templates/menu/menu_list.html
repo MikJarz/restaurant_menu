@@ -8,7 +8,7 @@
                 <strong>Modified:</strong>
                 {{ menu.modified_date }}
             </div>
-            <h1><a class ="pagination" href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.title }}</a></h1>
+            <h1><a href="{% url 'menu_detail' pk=menu.pk %}">{{ menu.title }}</a></h1>
             <p>{{ menu.description|linebreaksbr }}</p>
         </div>
     {% endfor %}
