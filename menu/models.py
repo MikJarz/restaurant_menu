@@ -10,6 +10,7 @@ class FoodItem(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     modified_date = models.DateTimeField(auto_now=True)
     vegan = models.BooleanField()
+    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.title

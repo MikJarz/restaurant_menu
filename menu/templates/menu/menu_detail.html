@@ -13,7 +13,26 @@
             {% if user.is_authenticated %}
                 <a class="btn btn-default" href="{% url 'menu_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             {% endif %}
-        <h2>{{ menu.title }}</h2>
+        <h2>{{ menu.title }} DETAIL</h2>
         <p>{{ menu.description|linebreaksbr }}</p>
+
+        {% for food in menu.food.all %}
+            <h3><i><p>{{ food.title }}</p></i></h3>
+            <p>{{ food.description }}</p>
+            <strong>Price:</strong> {{ food.price }} zł
+            <p><strong>Prepare time:</strong> {{ food.prepare_time }} min </p>
+            {% if food.vegan == True %}
+                <strong>Vegan dish</strong>
+            {% else %}
+                <strong>Not vegan dish</strong>
+            {% endif %}
+
+            <div class="date">
+                <strong>Created:</strong>
+                {{ food.created_date }}
+                <strong>Modified:</strong>
+                {{ food.modified_date }}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
