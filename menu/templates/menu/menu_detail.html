@@ -19,12 +19,18 @@
         {% for food in menu.food.all %}
             <h3><i><p>{{ food.title }}</p></i></h3>
             <p>{{ food.description }}</p>
-            <strong>Price:</strong> {{ food.price }} zł
-            <p><strong>Prepare time:</strong> {{ food.prepare_time }} min </p>
-            {% if food.vegan == True %}
+
+            <p>{% if food.vegan == True %}
                 <strong>Vegan dish</strong>
             {% else %}
                 <strong>Not vegan dish</strong>
+            {% endif %}</p>
+
+            <strong>Price:</strong> {{ food.price }} zł
+            <p><strong>Prepare time:</strong> {{ food.prepare_time }} min </p>
+
+            {% if food.image %}
+                <img src="{{ food.image.url }}" width="200" height="200">
             {% endif %}
 
             <div class="date">

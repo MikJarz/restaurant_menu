@@ -4,10 +4,24 @@ from .models import Menu
 from django.shortcuts import render, get_object_or_404
 from .forms import MenuForm, FoodForm
 from django.core.paginator import Paginator
+from django.db.models import Count
 
 
 def menu_list(request):
-    menus = Menu.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
+    menus = Menu.objects.filter(created_date__lte=timezone.now())
+    answer = request.GET.get('sort', False)
+
+    if answer == "name":
+        menus = Menu.objects.filter(created_date__lte=timezone.now()).order_by('title')
+    if answer == "-name":
+        menus = Menu.objects.filter(created_date__lte=timezone.now()).order_by('-title')
+    if answer == "count":
+        foodcount = Menu.objects.filter(created_date__lte=timezone.now())
+        menus = foodcount.annotate(num_food=Count('food')).order_by('-num_food')
+    if answer == "-count":
+        foodcount = Menu.objects.filter(created_date__lte=timezone.now())
+        menus = foodcount.annotate(num_food=Count('food')).order_by('num_food')
+
     paginator = Paginator(menus, 1)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)

@@ -1,5 +1,15 @@
 {% extends 'menu/base.html' %}
 {% block content %}
+    <form method="get">
+        <select name="sort">
+            <option selected disabled>Sort by:</option>
+            <option value="count">Count of dishes</option>
+            <option value="-count">-Count of dishes</option>
+            <option value="name">Name</option>
+            <option value="-name">-Name</option>
+        </select>
+        <input type="submit" value="OK">
+    </form>
     {% for menu in menus %}
         <div class="menu">
             <div class="date">
@@ -23,7 +33,6 @@
                 {% if food.image %}
                     <img src="{{ food.image.url }}" width="200" height="200">
                 {% endif %}
-<!--                czemu to dziala??-->
             {% endfor %}
         </div>
     {% endfor %}

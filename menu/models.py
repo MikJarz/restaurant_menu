@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class FoodItem(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, unique=True)
     description = models.TextField()
     price = models.PositiveIntegerField()
     prepare_time = models.PositiveIntegerField()
