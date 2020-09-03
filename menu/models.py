@@ -3,11 +3,11 @@ from django.utils import timezone
 
 
 class FoodItem(models.Model):
-    title = models.CharField(max_length=50, unique=True)
-    description = models.TextField()
+    title = models.CharField(max_length=50)
+    description = models.TextField(max_length=500)
     price = models.PositiveIntegerField()
     prepare_time = models.PositiveIntegerField()
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     vegan = models.BooleanField()
     image = models.ImageField(blank=True, null=True)
@@ -17,8 +17,8 @@ class FoodItem(models.Model):
 
 
 class Menu(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+    title = models.CharField(max_length=50)
+    description = models.TextField(max_length=500)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     food = models.ManyToManyField(FoodItem)
